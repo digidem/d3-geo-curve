@@ -1,0 +1,31 @@
+{
+  "name": "d3-geo-curve",
+  "version": "1.0.0",
+  "description": "Output curves from geojson data",
+  "main": "build/d3-geo-curve.js",
+  "module": "index",
+  "jsnext:main": "index",
+  "scripts": {
+    "pretest": "rm -rf build && mkdir build && rollup -c -o build/d3-geo-curve.js",
+    "test": "tape test.js",
+    "start": "st -nc & chokidar '**/*.js' -i 'build' -c 'npm run pretest'",
+    "prepublish": "npm run test && uglifyjs build/d3-geo-curve.js -c negate_iife=false -m -o build/d3-geo-curve.min.js"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "d3-path": "^1.0.3",
+    "d3-shape": "^1.0.4"
+  },
+  "devDependencies": {
+    "chokidar-cli": "^1.2.0",
+    "d3-geo": "^1.4.0",
+    "rollup": "^0.41.4",
+    "rollup-plugin-commonjs": "^7.0.0",
+    "rollup-plugin-node-resolve": "^2.0.0",
+    "st": "^1.2.0",
+    "standard": "^8.6.0",
+    "tape": "^4.6.3",
+    "uglify-js": "^2.7.5"
+  }
+}
